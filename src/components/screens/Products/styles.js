@@ -31,6 +31,11 @@ padding:20,
 flexDirection:"row",
 justifyContent:"center",
 alignItems:"center",
+gap:15,
+backgroundColor:COLORS.primary,
+marginVertical:10,
+marginHorizontal:20,
+borderRadius:20
 
 
 
@@ -41,6 +46,11 @@ alignItems:"center",
 image:{
     width: 100,
     height: 100,
+
+},
+textName:{
+    fontFamily:"RobotoMono-Bold",
+    color:COLORS.text2
 
 }
 

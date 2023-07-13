@@ -16,7 +16,7 @@ const Products = ({ onHandleGoBack, idCategory }) => {
                 <Text style={styles.text}>Volver a categorias</Text>
 
             </TouchableOpacity>
-            
+
 
             <View>
                 <FlatList
@@ -28,7 +28,7 @@ const Products = ({ onHandleGoBack, idCategory }) => {
                                 style={styles.image}
                                 source={{uri: item.image}}
                             />
-                            <Text >{item.name}</Text>
+                            <Text style={styles.textName} >{item.name}</Text>
                         </View>
                     }
                 />
