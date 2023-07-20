@@ -5,18 +5,29 @@ export const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        alignItems: "center"
+        alignItems: "center",
+        margin:10
+    },containerImage:{
+        padding:20,
+        flexDirection:"row",
+        justifyContent:"center",
+        alignItems:"center",
+        
+
     },
 
     text: {
-        fontFamily: "RobotoMono-Bold"
+        fontFamily: "RobotoMono-Bold",
+        padding:2,
+        textAlign:"center"
     },
     image: {
-
-        width: 150,
+        borderRadius:20,
+        width: 200,
         height: 200
     },
     containerDetails: {
+        marginVertical:10
 
     }
 

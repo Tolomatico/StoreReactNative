@@ -12,17 +12,19 @@ const ProductDetail = ({ navigation, route }) => {
 
         <View style={styles.container}>
 
-            
+            <View style={styles.containerImage}>
 
-            <Image source={{ uri: product.image }} style={styles.image} resizeMode="cover" >
+                <Image source={{ uri: product.image }} style={[styles.image,{backgroundColor:color}]} resizeMode="cover" >
 
-            </Image>
+                </Image>
+
+            </View>
 
             <View style={styles.containerDetails}>
 
-            <Text style={styles.text}>{product.name}</Text>
-            <Text style={styles.text}>{product.description}</Text>
-            <Text style={styles.text}>{`${product.currency.code}$${product.price}`}</Text>
+                <Text style={styles.text}>{product.name}</Text>
+                <Text style={styles.text}>{product.description}</Text>
+                <Text style={styles.text}>{`${product.currency.code}$${product.price}`}</Text>
 
             </View>
 
