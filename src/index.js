@@ -1,9 +1,12 @@
-import { ActivityIndicator, SafeAreaView, Settings, View } from 'react-native';
+import { ActivityIndicator, SafeAreaView,  View } from 'react-native';
 import { styles } from './styles';
-import { Categories, Header, Products } from './components';
+import {  Header} from "./components";
 import { useEffect, useState } from 'react';
 import { useFonts } from 'expo-font';
 import { COLORS } from './themes/colors';
+
+import NavigationRoot from './navigation';
+import { Categories, Products } from './screens';
 
 
 
@@ -22,29 +25,23 @@ export default function App() {
  
 
 
-  const [isCategorySelected, setIsCategorySelected] = useState(false)
-  const [idCategory, setIdCategory] = useState(null)
+  //  const [isCategorySelected, setIsCategorySelected] = useState(false)
+  //  const [idCategory, setIdCategory] = useState(null)
 
-  const title = isCategorySelected ? "Productos" : "Categorias"
+  //  const title = isCategorySelected ? "Productos" : "Categorias"
+  //  const categorySelected = (id) => {
 
-  const categorySelected = (id) => {
+  //    console.warn(id)
+  //    setIsCategorySelected(true)
+  //    setIdCategory(id)
 
-    console.warn(id)
-    setIsCategorySelected(true)
-    setIdCategory(id)
+  //  }
 
-  }
+  //  const onHandleGoBack = () => {
 
-  const onHandleGoBack = () => {
-
-    setIsCategorySelected(false)
-    setIdCategory(null)
-  }
-
-  
-
-
-
+  //    setIsCategorySelected(false)
+  //    setIdCategory(null)
+  //  }
 
   if(!loaded){
 
@@ -57,26 +54,25 @@ return (
     </View>
   )
   }
-  
-
-
-
-
-
 
 
   return (
     
         <SafeAreaView style={styles.safeArea}>
-          <View style={styles.container}>
+
+          <NavigationRoot/>
+             {/* <View style={styles.container}>
             <Header title={title} />
             {isCategorySelected ? (
               <Products onHandleGoBack={onHandleGoBack} idCategory={idCategory} />
             ) : (
               <Categories categorySelected={categorySelected} />
             )}
-          </View>
+          </View> */}
         </SafeAreaView>
       )
    
             }
+
+
+        

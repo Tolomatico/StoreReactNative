@@ -1,17 +1,19 @@
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles"
 import { Ionicons } from '@expo/vector-icons';
-import { COLORS } from "../../../themes/colors";
-import products from "../../../constants/data/products.json";
+import { COLORS } from "../../themes/colors";
+import products from "../../constants/data/products.json";
 
-const Products = ({ onHandleGoBack, idCategory }) => {
+const Products = ({ navigation , route}) => {
 
-    const productsFilteredByCategory = products.filter((product) => product.categoryId === idCategory)
+    const {categoryId,color } = route.params
+
+    const productsFilteredByCategory = products.filter((product) => product.categoryId === categoryId)
 
 
     return (
         <View style={styles.container} >
-            <TouchableOpacity onPress={onHandleGoBack} style={styles.touchable}  >
+            <TouchableOpacity style={styles.touchable}  >
                 <Ionicons name="arrow-back-circle-outline" size={24} color={COLORS.primary} />
                 <Text style={styles.text}>Volver a categorias</Text>
 
@@ -23,7 +25,7 @@ const Products = ({ onHandleGoBack, idCategory }) => {
                     data={productsFilteredByCategory}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) =>
-                        <View style={styles.containerProduct}>
+                        <View style={[styles.containerProduct,{backgroundColor:color}]}>
                             <Image
                                 style={styles.image}
                                 source={{uri: item.image}}
