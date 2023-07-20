@@ -10,14 +10,17 @@ const Products = ({ navigation , route}) => {
 
     const productsFilteredByCategory = products.filter((product) => product.categoryId === categoryId)
 
+    const onSelectProduct = ({productId,color,name})=>{
+
+        console.warn({productId,color,name})
+
+         navigation.navigate("ProductDetail",{productId,color,name})
+    }
+
 
     return (
         <View style={styles.container} >
-            <TouchableOpacity style={styles.touchable}  >
-                <Ionicons name="arrow-back-circle-outline" size={24} color={COLORS.primary} />
-                <Text style={styles.text}>Volver a categorias</Text>
-
-            </TouchableOpacity>
+            
 
 
             <View>
@@ -25,13 +28,13 @@ const Products = ({ navigation , route}) => {
                     data={productsFilteredByCategory}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) =>
-                        <View style={[styles.containerProduct,{backgroundColor:color}]}>
+                        <TouchableOpacity onPress={()=>onSelectProduct({productId:item.id,color,name:item.name})} style={[styles.containerProduct,{backgroundColor:color}]}>
                             <Image
                                 style={styles.image}
                                 source={{uri: item.image}}
                             />
                             <Text style={styles.textName} >{item.name}</Text>
-                        </View>
+                        </TouchableOpacity>
                     }
                 />
             </View>

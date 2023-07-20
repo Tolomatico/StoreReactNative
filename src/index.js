@@ -1,12 +1,11 @@
 import { ActivityIndicator, SafeAreaView,  View } from 'react-native';
 import { styles } from './styles';
-import {  Header} from "./components";
-import { useEffect, useState } from 'react';
+
 import { useFonts } from 'expo-font';
 import { COLORS } from './themes/colors';
 
 import NavigationRoot from './navigation';
-import { Categories, Products } from './screens';
+
 
 
 
@@ -25,24 +24,6 @@ export default function App() {
  
 
 
-  //  const [isCategorySelected, setIsCategorySelected] = useState(false)
-  //  const [idCategory, setIdCategory] = useState(null)
-
-  //  const title = isCategorySelected ? "Productos" : "Categorias"
-  //  const categorySelected = (id) => {
-
-  //    console.warn(id)
-  //    setIsCategorySelected(true)
-  //    setIdCategory(id)
-
-  //  }
-
-  //  const onHandleGoBack = () => {
-
-  //    setIsCategorySelected(false)
-  //    setIdCategory(null)
-  //  }
-
   if(!loaded){
 
 
@@ -57,19 +38,12 @@ return (
 
 
   return (
-    
-        <SafeAreaView style={styles.safeArea}>
-
+    <SafeAreaView style={styles.safeArea}>
+       
           <NavigationRoot/>
-             {/* <View style={styles.container}>
-            <Header title={title} />
-            {isCategorySelected ? (
-              <Products onHandleGoBack={onHandleGoBack} idCategory={idCategory} />
-            ) : (
-              <Categories categorySelected={categorySelected} />
-            )}
-          </View> */}
-        </SafeAreaView>
+          </SafeAreaView>
+        
+
       )
    
             }

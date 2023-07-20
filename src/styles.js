@@ -5,12 +5,12 @@ import { COLORS } from "./themes/colors";
 export const styles = StyleSheet.create({
     safeArea: {
         flex: 1,
-        backgroundColor: COLORS.background,
+        backgroundColor: COLORS.background, 
+        paddingTop: StatusBar.currentHeight,
     },
     container: {
         flex: 1,
-
-        paddingTop: StatusBar.currentHeight,
+       
     },
     text: {
         color: COLORS.text1
