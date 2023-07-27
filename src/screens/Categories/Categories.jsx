@@ -1,9 +1,11 @@
 import { FlatList, View } from "react-native"
-import CATEGORIES from "../../constants/data/categories.json"
 import { styles } from "./styles"
 import CategoryItem from "../../components/Category-item/CategoryItem"
+import { useSelector } from "react-redux"
 
 const Categories = ({ navigation }) => {
+
+    const CATEGORIES = useSelector((state)=>state.categories.data)
 
     const categorySelected = (categoryId,color,name) => {
 

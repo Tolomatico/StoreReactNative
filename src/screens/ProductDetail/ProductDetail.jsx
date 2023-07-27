@@ -1,12 +1,22 @@
-import { Image, ImageBackground, Text, View } from "react-native"
+import { Image, ImageBackground, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
-import products from "../../constants/data/products.json"
+import { useDispatch, useSelector } from "react-redux"
+import { addToCart } from "../../store/cart/cart.slice"
+
 
 const ProductDetail = ({ navigation, route }) => {
+
+    const products = useSelector((state)=>state.products.data)
+    const dispath=useDispatch()
 
     const { productId, color } = route.params
 
     const product = products.find((product) => product.id === productId)
+
+    const onAddToCart = ()=> {
+       
+        dispath(addToCart(product))
+    }
 
     return (
 
@@ -25,6 +35,14 @@ const ProductDetail = ({ navigation, route }) => {
                 <Text style={styles.text}>{product.name}</Text>
                 <Text style={styles.text}>{product.description}</Text>
                 <Text style={styles.text}>{`${product.currency.code}$${product.price}`}</Text>
+
+            </View>
+
+            <View>
+
+                <TouchableOpacity onPress={()=>onAddToCart(product)}  >
+                    <Text>Add to Cart</Text>
+                </TouchableOpacity>
 
             </View>
 

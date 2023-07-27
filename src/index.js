@@ -1,10 +1,12 @@
-import { ActivityIndicator, SafeAreaView,  View } from 'react-native';
+import { ActivityIndicator, SafeAreaView, View } from 'react-native';
 import { styles } from './styles';
 
 import { useFonts } from 'expo-font';
 import { COLORS } from './themes/colors';
 
 import NavigationRoot from './navigation';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 
 
@@ -21,32 +23,33 @@ export default function App() {
   })
 
 
- 
 
 
-  if(!loaded){
+
+  if (!loaded) {
 
 
-return (
-    <View style={styles.loader}>
+    return (
+      <View style={styles.loader}>
 
-      <ActivityIndicator color={COLORS.primary} size="large" />
+        <ActivityIndicator color={COLORS.primary} size="large" />
 
-    </View>
-  )
+      </View>
+    )
   }
 
 
   return (
+    <Provider store={store}>
     <SafeAreaView style={styles.safeArea}>
-       
-          <NavigationRoot/>
-          </SafeAreaView>
-        
 
-      )
-   
-            }
+      <NavigationRoot />
+
+    </SafeAreaView>
+    </Provider>
+
+  )
+
+}
 
 
-        

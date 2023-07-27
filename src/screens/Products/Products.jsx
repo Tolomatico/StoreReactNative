@@ -1,10 +1,10 @@
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles"
-import { Ionicons } from '@expo/vector-icons';
-import { COLORS } from "../../themes/colors";
-import products from "../../constants/data/products.json";
+import { useSelector } from "react-redux";
 
 const Products = ({ navigation , route}) => {
+
+    const products= useSelector((state)=>state.products.data)
 
     const {categoryId,color } = route.params
 
