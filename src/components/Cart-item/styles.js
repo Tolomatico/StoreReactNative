@@ -23,6 +23,7 @@ export const styles = StyleSheet.create({
         elevation: 5,
     },
     itemImage: {
+        flex:1,
         height: 100,
         width: 75
     },

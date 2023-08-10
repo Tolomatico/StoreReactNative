@@ -4,10 +4,13 @@ import CartNavigator from "./cart";
 import OrdersNavigator from "./orders";
 import { COLORS } from "../themes/colors";
 import { Ionicons } from '@expo/vector-icons';
+import { useSelector } from "react-redux";
 
 const BottomTab = createBottomTabNavigator()
 
 const TabsNavigator = () => {
+
+    const cartItems=useSelector((state)=>state.cart.items)
 
 
     return (
@@ -44,7 +47,7 @@ const TabsNavigator = () => {
                     tabBarLabel:"Cart",
                     tabBarIcon:({focused,color,size})=>
                      <Ionicons name={focused ? "cart" : "cart-outline"} size={size} color={color} />,
-                     tabBarBadge:2,
+                     tabBarBadge:cartItems.length,
                      tabBarBadgeStyle:{
                         fontFamily:"RobotoMono-Bold"
 

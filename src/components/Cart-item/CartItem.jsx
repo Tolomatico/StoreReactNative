@@ -1,10 +1,16 @@
 import { Ionicons } from "@expo/vector-icons"
 import { styles } from "./styles"
-import { Image, Text, TouchableOpacity,View } from "react-native"
+import { Image, Text, TouchableOpacity, View } from "react-native"
 import { COLORS } from "../../themes/colors"
 
 
-const CartItem = ({ id, categoryId, name, price, image, currency, quantity, stock, ...props }) => {
+const CartItem = ({ id
+    , categoryId,
+    name, price,
+    image, currency, quantity,
+    stock, onIncreseItemQuantity,
+    onDecreseItemQuantity,
+    onRemoveItemFromCart }) => {
 
     return (
         <View style={styles.container}>
@@ -23,13 +29,13 @@ const CartItem = ({ id, categoryId, name, price, image, currency, quantity, stoc
             </View>
 
             <View style={styles.containerIcons}>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={() => onIncreseItemQuantity({id})}>
                     <Ionicons name="add" size={25} color={COLORS.text2} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={() => onDecreseItemQuantity({id})}>
                     <Ionicons name="remove" size={25} color={COLORS.text2} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => { }}>
+                <TouchableOpacity onPress={() => onRemoveItemFromCart({id})}>
                     <Ionicons name="trash" size={20} color={COLORS.text2} />
                 </TouchableOpacity>
 

@@ -1,12 +1,36 @@
-import { Text, View } from "react-native"
+import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
+import { useGetOrdersQuery } from "../../store/orders/api"
+import { OrderItem } from "../../components"
+import { COLORS } from "../../themes/colors"
 
-const Orders =() =>{
+const Orders = () => {
 
+    const { data, error, isLoading } = useGetOrdersQuery()
+    console.warn(data,error)
 
-    return(
+    const keyExtractor=(item)=>item.id.toString()
+
+    const renderItem=({item})=><OrderItem  {...item}/>
+
+    if (isLoading)
+    return (
+      <View >
+        <ActivityIndicator size="large" color={COLORS.primary} />
+      </View>
+    )
+
+    console.log(data)
+    return (
+
         <View style={styles.container} >
-                <Text>Ordenes</Text>
+           
+            <FlatList
+                data={data}
+                renderItem={renderItem} 
+                keyExtractor={keyExtractor}
+
+            />
 
         </View>
 

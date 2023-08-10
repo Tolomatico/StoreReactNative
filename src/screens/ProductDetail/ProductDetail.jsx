@@ -1,22 +1,38 @@
-import { Image, ImageBackground, Text, TouchableOpacity, View } from "react-native"
+import { ActivityIndicator, Image, ImageBackground, Text, TouchableOpacity, View } from "react-native"
 import { styles } from "./styles"
 import { useDispatch, useSelector } from "react-redux"
 import { addToCart } from "../../store/cart/cart.slice"
+import { useGetProductByIdQuery } from "../../store/products/api"
+import { COLORS } from "../../themes/colors"
 
 
 const ProductDetail = ({ navigation, route }) => {
 
-    const products = useSelector((state)=>state.products.data)
+   
     const dispath=useDispatch()
 
     const { productId, color } = route.params
 
-    const product = products.find((product) => product.id === productId)
+    const {data,error,isLoading}=useGetProductByIdQuery(productId)
+
+   
+
+    const product = data?.find((product)=>product.id===productId)
 
     const onAddToCart = ()=> {
        
         dispath(addToCart(product))
     }
+
+    
+    if (isLoading)
+    return (
+      <View >
+        <ActivityIndicator size="large" color={COLORS.primary} />
+      </View>
+    );
+
+   
 
     return (
 
